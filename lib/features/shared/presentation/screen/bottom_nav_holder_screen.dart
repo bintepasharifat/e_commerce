@@ -1,5 +1,6 @@
 import 'package:e_commerce/features/carts/presentation/screen/cart_screens.dart';
 import 'package:e_commerce/features/category/presentation/screen/category_list_screen.dart';
+import 'package:e_commerce/features/home/presentation/conreollers/home_slider_controller.dart';
 // import 'package:e_commerce/features/category/presentation/screens/category_list_screen.dart';
 import 'package:e_commerce/features/home/presentation/screen/home_screen.dart';
 // import 'package:e_commerce/features/home/presentation/screens/home_screen.dart';
@@ -26,6 +27,12 @@ class _BottomNavHolderScreenState extends State<BottomNavHolderScreen> {
     CartScreen(),
     WishListScreen(),
   ];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Get.find<HomeSliderController>().getHomeSliders();
+  }
 
   @override
   Widget build(BuildContext context) {

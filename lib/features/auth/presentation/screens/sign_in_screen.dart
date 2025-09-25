@@ -27,6 +27,7 @@ class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _passwordTEController = TextEditingController();
 
   final LoginController _loginController = Get.find<LoginController>();
+  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +60,20 @@ class _SignInScreenState extends State<SignInScreen> {
                 const SizedBox(height: 8),
                 TextFormField(
                   controller: _passwordTEController,
-                  decoration: InputDecoration(hintText: 'Password'),
+                  obscureText: _obscureText,
+                  decoration: InputDecoration(
+                    hintText: 'Password',
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscureText ? Icons.visibility_off : Icons.visibility,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscureText = !_obscureText;
+                        });
+                      },
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 16),
                 GetBuilder<LoginController>(
@@ -72,7 +86,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         child: Text('Login'),
                       ),
                     );
-                  }
+                  },
                 ),
                 const SizedBox(height: 16),
                 TextButton(
@@ -94,14 +108,20 @@ class _SignInScreenState extends State<SignInScreen> {
 
   Future<void> _signIn() async {
     LoginRequestModel model = LoginRequestModel(
-        email: _emailTEController.text.trim(),
-        password: _passwordTEController.text);
+      email: _emailTEController.text.trim(),
+      password: _passwordTEController.text,
+    );
     bool isSuccess = await _loginController.login(model);
     if (isSuccess) {
       await Get.find<AuthController>().saveUserData(
-          _loginController.userModel!, _loginController.accessToken!);
+        _loginController.userModel!,
+        _loginController.accessToken!,
+      );
       Navigator.pushNamedAndRemoveUntil(
-          context, BottomNavHolderScreen.name, (predicate) => false);
+        context,
+        BottomNavHolderScreen.name,
+        (predicate) => false,
+      );
     } else {
       showSnackBarMessage(context, _loginController.errorMessage!);
     }

@@ -1,6 +1,4 @@
-// import 'package:e_commerce/features/auth/data/models/sign_up_request_model.dart';
 import 'package:e_commerce/features/auth/data/sign_up_request_model.dart';
-// import 'package:e_commerce/features/auth/presentation/controllers/sign_up_controller.dart';
 import 'package:e_commerce/features/auth/presentation/controolers/sign_up_controller.dart';
 import 'package:e_commerce/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:e_commerce/features/auth/presentation/screens/verity_otp_screen.dart';
@@ -28,6 +26,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _passwordTEController = TextEditingController();
 
   final SignUpController _signUpController = Get.find<SignUpController>();
+  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +82,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(height: 8),
                 TextFormField(
                   controller: _passwordTEController,
-                  decoration: InputDecoration(hintText: 'Password'),
+                  obscureText: _obscureText,
+                  decoration: InputDecoration(
+                    hintText: 'Password',
+
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscureText ? Icons.visibility_off : Icons.visibility,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscureText = !_obscureText;
+                        });
+                      },
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 16),
                 GetBuilder<SignUpController>(
@@ -93,7 +106,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       replacement: CenteredCircularProgress(),
                       child: FilledButton(
                         onPressed: _onTapSignUpButton,
-                        child: Text('Sign Up'),
+                        child: Text('Sign to Up'),
                       ),
                     );
                   },
@@ -101,7 +114,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(height: 16),
                 TextButton(
                   onPressed: _onTapBackToLoginButton,
-                  child: Text('Back to Login'),
+                  child: Text('Back  Login'),
                 ),
               ],
             ),
@@ -128,8 +141,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
     final bool isSuccess = await _signUpController.signUp(model);
     if (isSuccess) {
       showSnackBarMessage(context, 'Sign up successful! Please login');
-      Navigator.pushNamed(context, VerifyOtpScreen.name,
-          arguments: _emailTEController.text.trim());
+      Navigator.pushNamed(
+        context,
+        VerifyOtpScreen.name,
+        arguments: _emailTEController.text.trim(),
+      );
     } else {
       showSnackBarMessage(context, _signUpController.errorMessage!);
     }
