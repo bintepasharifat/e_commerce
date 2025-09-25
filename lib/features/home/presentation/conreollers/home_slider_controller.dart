@@ -1,7 +1,7 @@
 import 'package:e_commerce/app/urls.dart';
 import 'package:e_commerce/core/models/network_caller.dart';
 import 'package:e_commerce/core/services/network_caller.dart';
-import 'package:e_commerce/features/home/data/models/homw_slider.dart';
+import 'package:e_commerce/features/home/data/models/home_slider.dart';
 import 'package:get/get.dart';
 
 

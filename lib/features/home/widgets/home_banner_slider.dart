@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_commerce/app/app_colors.dart';
-import 'package:e_commerce/features/home/data/models/homw_slider.dart';
+import 'package:e_commerce/features/home/data/models/home_slider.dart';
 import 'package:flutter/material.dart';
 
 class HomeBannerSlider extends StatefulWidget {
