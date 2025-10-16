@@ -1,7 +1,5 @@
 import 'package:e_commerce/app/controllers/auth_controller.dart';
-// import 'package:e_commerce/features/auth/data/models/verify_otp_request_model.dart';
 import 'package:e_commerce/features/auth/data/verify_otp_request_model.dart';
-// import 'package:e_commerce/features/auth/presentation/controllers/verify_otp_controller.dart';
 import 'package:e_commerce/features/auth/presentation/controolers/verify_otp_controller.dart';
 import 'package:e_commerce/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:e_commerce/features/auth/presentation/widgets/app_logo.dart';
@@ -12,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-// import '../../../shared/presentation/screens/bottom_nav_holder_screen.dart';
+
 
 class VerifyOtpScreen extends StatefulWidget {
   const VerifyOtpScreen({super.key, required this.email});

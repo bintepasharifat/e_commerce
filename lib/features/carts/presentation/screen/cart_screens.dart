@@ -54,12 +54,16 @@ class _CartScreenState extends State<CartScreen> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'Nike Shoe - 2025 Edition',
-                                          style: TextTheme.of(context).titleSmall,
+                                          'Nike Shoe - 2025 New Model Edition',
+                                          style: TextTheme.of(
+                                            context,
+                                          ).titleSmall,
                                         ),
                                         Text(
                                           'Size: XL  Color: Red',
-                                          style: TextTheme.of(context).bodySmall,
+                                          style: TextTheme.of(
+                                            context,
+                                          ).bodySmall,
                                         ),
                                       ],
                                     ),
@@ -71,15 +75,15 @@ class _CartScreenState extends State<CartScreen> {
                                 ],
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     '${takaSign}1000',
-                                    style: TextTheme.of(context).titleSmall?.copyWith(
-                                      color: AppColors.themeColor,
-                                    ),
+                                    style: TextTheme.of(context).titleSmall
+                                        ?.copyWith(color: AppColors.themeColor),
                                   ),
-                                  IncDecButton(onChange: (int value) {})
+                                  IncDecButton(onChange: (int value) {}),
                                 ],
                               ),
                             ],

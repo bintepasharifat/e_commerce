@@ -137,6 +137,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       password: _passwordTEController.text,
       city: _addressTEController.text.trim(),
       phone: _mobileTEController.text.trim(),
+      
     );
     final bool isSuccess = await _signUpController.signUp(model);
     if (isSuccess) {

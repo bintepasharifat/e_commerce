@@ -1,6 +1,5 @@
 import 'package:e_commerce/app/extensions/localization_extension.dart';
 import 'package:e_commerce/features/auth/data/models/login_request_model.dart';
-// import 'package:e_commerce/features/auth/presentation/controllers/login_controller.dart';
 import 'package:e_commerce/features/auth/presentation/controolers/login_controller.dart';
 import 'package:e_commerce/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:e_commerce/features/auth/presentation/widgets/app_logo.dart';
@@ -10,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../app/controllers/auth_controller.dart';
-// import '../../../shared/presentation/screens/bottom_nav_holder_screen.dart';
 import '../../../shared/presentation/widgets/snack_bar_message.dart';
 
 class SignInScreen extends StatefulWidget {
